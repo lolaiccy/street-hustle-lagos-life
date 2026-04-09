@@ -3,84 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>Street Hustle: Lagos Life</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #111;
-      color: #fff;
-    }
-
-    h1 {
-      color: gold;
-    }
-
-    button {
-      padding: 15px 25px;
-      font-size: 18px;
-      margin: 10px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .sell {
-      background-color: green;
-      color: white;
-    }
-
-    .upgrade {
-      background-color: orange;
-      color: black;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>💰 Street Hustle: Lagos Life</h1>
-  <p>Money: ₦<span id="money">0</span></p>
-  <p>Level: <span id="level">Street Seller</span></p>
+  <div class="game">
+    <h1>💰 Street Hustle: Lagos Life</h1>
 
-  <button class="sell" onclick="sell()">Sell Jewelry 💎</button>
-  <button class="upgrade" onclick="upgrade()">Upgrade Business 🚀</button>
+    <div class="stats">
+      <p>Money: ₦<span id="money">0</span></p>
+      <p>Level: <span id="level">Street Seller</span></p>
+      <p>Reputation: <span id="rep">1</span></p>
+    </div>
 
-  <script>
-    let money = 0;
-    let earnings = 10;
-    let level = 1;
+    <div class="buttons">
+      <button onclick="sell()">Sell Jewelry 💎</button>
+      <button onclick="ride()">Ride Hailing 🚗</button>
+      <button onclick="influence()">Post on Instagram 📱</button>
+    </div>
 
-    function sell() {
-      money += earnings;
-      updateDisplay();
-    }
+    <div class="upgrades">
+      <button onclick="upgrade()">Upgrade Business 🚀 (₦200)</button>
+    </div>
 
-    function upgrade() {
-      if (money >= 100) {
-        money -= 100;
-        earnings += 10;
-        level++;
+    <p id="event"></p>
+  </div>
 
-        updateLevel();
-        updateDisplay();
-      } else {
-        alert("You need ₦100 to upgrade!");
-      }
-    }
-
-    function updateDisplay() {
-      document.getElementById("money").innerText = money;
-    }
-
-    function updateLevel() {
-      let levelText = "Street Seller";
-
-      if (level === 2) levelText = "Market Boss";
-      if (level === 3) levelText = "Shop Owner";
-      if (level >= 4) levelText = "CEO 💼";
-
-      document.getElementById("level").innerText = levelText;
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
