@@ -1,1 +1,74 @@
-index.html
+let money = 0;
+let level = 1;
+let rep = 1;
+
+function update() {
+  document.getElementById("money").innerText = money;
+  document.getElementById("rep").innerText = rep;
+
+  let levelText = "Street Seller";
+
+  if (level === 2) levelText = "Market Boss";
+  if (level === 3) levelText = "Shop Owner";
+  if (level >= 4) levelText = "CEO 💼";
+
+  document.getElementById("level").innerText = levelText;
+}
+
+// Actions
+function sell() {
+  let earn = 10 * rep;
+  money += earn;
+  showEvent("You sold jewelry for ₦" + earn);
+  randomEvent();
+  update();
+}
+
+function ride() {
+  let earn = 15 * rep;
+  money += earn;
+  showEvent("You completed a ride and earned ₦" + earn);
+  randomEvent();
+  update();
+}
+
+function influence() {
+  let gain = Math.floor(Math.random() * 3) + 1;
+  rep += gain;
+  showEvent("Your post went viral! +"+gain+" reputation 📈");
+  randomEvent();
+  update();
+}
+
+// Upgrade
+function upgrade() {
+  if (money >= 200) {
+    money -= 200;
+    level++;
+    rep += 2;
+    showEvent("Business upgraded! 🚀");
+  } else {
+    showEvent("You need ₦200 to upgrade!");
+  }
+  update();
+}
+
+// Random events
+function randomEvent() {
+  let chance = Math.random();
+
+  if (chance < 0.2) {
+    money -= 20;
+    showEvent("Police wahala! You lost ₦20 😭");
+  } else if (chance < 0.4) {
+    money += 30;
+    showEvent("Big customer! +₦30 🤑");
+  }
+}
+
+// Display events
+function showEvent(text) {
+  document.getElementById("event").innerText = text;
+}
+
+update();++++++++++++++++++++++++++++++++++++++++++++
